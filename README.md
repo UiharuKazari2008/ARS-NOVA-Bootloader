@@ -3,6 +3,9 @@
 # ARS NOVA Bootloader for Blue Steel OS
 ARS NOVA Bootloader preboot for ARS NOVA and Blue Steel OS for ALLS Hardware
 
+## Important Notice
+This project is focused on supporting ARS NOVA / Blue Steel Project so it will not work without its lifecycle controller, as a nice gesture i will branch the currect working copy that does not use a lifecycle controller as the [LTS branch](https://github.com/UiharuKazari2008/ARS-NOVA-Bootloader/tree/lts)
+
 ## SOS Keychip Interaction
 Designed to interface with Savior Of Song Keychip 2.18+
 1. Import the keychip start scheduled task from `/Support`

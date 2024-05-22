@@ -10,7 +10,7 @@ public class ErrorCheck : MonoBehaviour
 
 	private void Start()
 	{
-		string path = Path.Combine(Application.streamingAssetsPath, fileName);
+		string path = Path.Combine("Q:\\proc\\", fileName);
 		if (File.Exists(path))
 		{
 			string[] array = File.ReadAllLines(path);

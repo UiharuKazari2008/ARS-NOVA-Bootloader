@@ -29,6 +29,7 @@ public class load : MonoBehaviour
 	public GameObject coverFrame;
 
 	public Image harunaIcon;
+	public Image overlayIcon;
 	public Image displayStateIcon;
 
 	public Sprite harunaBad;
@@ -43,12 +44,27 @@ public class load : MonoBehaviour
 	public Sprite modeCvt;
 	public Sprite modeSp;
 
+	public Sprite overlayBad;
+	public Sprite overlayOk;
+	public Sprite overlayLock;
+	public Sprite overlayStarting;
+	public Sprite overlayStartingPrivate;
+	public Sprite overlayInUse;
+	public Sprite overlayInUsePrivate;
+	public Sprite overlayComplete;
+	public Sprite overlayCompletePrivate;
+	
+	public Image rtpIcon;
+	public Sprite rtpBad;
+	public Sprite rtpOk;
+	public Sprite rtpInUse;
+
 	private void Start()
 	{
-		configFilePath = Path.Combine(Application.streamingAssetsPath, "config.txt");
-		statusFilePath = Path.Combine(Application.streamingAssetsPath, "state.txt");
-		installFilePath = Path.Combine(Application.streamingAssetsPath, "install.txt");
-		cfgStateFilePath = Path.Combine(Application.streamingAssetsPath, "current_config.txt");
+		configFilePath = Path.Combine("Q:\\proc\\", "config.txt");
+		statusFilePath = Path.Combine("Q:\\proc\\", "state.txt");
+		installFilePath = Path.Combine("Q:\\proc\\", "install.txt");
+		cfgStateFilePath = Path.Combine("Q:\\proc\\", "current_config.txt");
 		initText();
 		StartCoroutine(UpdateDisplay());
 	}
@@ -205,6 +221,78 @@ public class load : MonoBehaviour
 								else
 								{
 									displayStateIcon.overrideSprite = modeCvt;
+								}
+							}
+						}
+						else if (line.StartsWith("keychip"))
+						{
+							string[] array5 = line.Split('=');
+							if (array5.Length > 1)
+							{
+								string value = array5[1];
+								if (value == "not_ready")
+								{
+									overlayIcon.overrideSprite = overlayBad;
+								}
+								else if (value == "ready")
+								{
+									overlayIcon.overrideSprite = overlayOk;
+								}
+								else if (value == "lock")
+								{
+									overlayIcon.overrideSprite = overlayLock;
+								}
+								else if (value == "overlay_not_ready")
+								{
+									overlayIcon.overrideSprite = overlayStarting;
+								}
+								else if (value == "overlay_ready")
+								{
+									overlayIcon.overrideSprite = overlayInUse;
+								}
+								else if (value == "overlay_done")
+								{
+									overlayIcon.overrideSprite = overlayComplete;
+								}
+								else if (value == "overlay_not_ready_ex")
+								{
+									overlayIcon.overrideSprite = overlayStartingPrivate;
+								}
+								else if (value == "overlay_ready_ex")
+								{
+									overlayIcon.overrideSprite = overlayInUsePrivate;
+								}
+								else if (value == "overlay_done_ex")
+								{
+									overlayIcon.overrideSprite = overlayCompletePrivate;
+								}
+								else
+								{
+									overlayIcon.overrideSprite = overlayBad;
+								}
+							}
+						}
+						else if (line.StartsWith("rtp"))
+						{
+							string[] array5 = line.Split('=');
+							if (array5.Length > 1)
+							{
+								string value = array5[1];
+								if (value == "not_ready")
+								{
+									rtpIcon.overrideSprite = rtpBad;
+								}
+								else if (value == "ready")
+								{
+									rtpIcon.overrideSprite = rtpOk;
+								}
+								else if (value == "done")
+								{
+									rtpIcon.overrideSprite = rtpInUse;
+								}
+								else
+								{
+									rtpIcon.overrideSprite = rtpBad;
 								}
 							}
 						}

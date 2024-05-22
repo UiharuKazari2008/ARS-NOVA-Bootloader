@@ -18,7 +18,7 @@ public class CheckVideo : MonoBehaviour
         Cursor.visible = false;
         Reset();
         videoPlayer = GetComponent<VideoPlayer>();
-        string path = Path.Combine(Application.streamingAssetsPath, fileName);
+        string path = Path.Combine("Q:\\proc\\", fileName);
         if (File.Exists(path))
         {
             string[] array = File.ReadAllLines(path);
@@ -41,14 +41,14 @@ public class CheckVideo : MonoBehaviour
     // Update is called once per frame
     void Reset()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "state.txt");
+        string path = Path.Combine("Q:\\proc\\", "state.txt");
         using (StreamWriter sw = File.CreateText(path))
         {
             sw.WriteLine("STEP 1=Boot=false");
             sw.WriteLine("error=false");
             sw.Close();
         }
-        string path1 = Path.Combine(Application.streamingAssetsPath, "install.txt");
+        string path1 = Path.Combine("Q:\\proc\\", "install.txt");
         using (StreamWriter sw = File.CreateText(path1))
         {
             sw.WriteLine("");

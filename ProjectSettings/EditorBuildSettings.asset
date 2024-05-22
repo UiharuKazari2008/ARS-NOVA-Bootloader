@@ -15,9 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/levelUpdate.unity
     guid: 19a07112d7edb9d498b3e02f88555297
   - enabled: 1
+    path: Assets/Scenes/levelSME.unity
+    guid: 3ae730f2c97afeb41b8f56b85e1f9551
+  - enabled: 1
     path: Assets/Scenes/levelNormal.unity
     guid: 0144778b31f5bcb41b365994f99f3c24
   - enabled: 1
     path: Assets/Scenes/error.unity
     guid: f67c8fe152bdb9340bd044f259271c96
+  - enabled: 1
+    path: Assets/Scenes/errorLifecycle.unity
+    guid: 95393dc2bd7e97b4e8b7dce9113aba76
   m_configObjects: {}

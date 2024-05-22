@@ -25,7 +25,7 @@ public class bootgame : MonoBehaviour
         {
 			startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 		}
-		startInfo.Arguments = "-File \"" + Application.streamingAssetsPath + "/" + batchFileName + "\"";
+		startInfo.Arguments = "-File \"Q:/lib/boot/" + batchFileName + "\"";
 		Process process = new Process();
 		process.StartInfo = startInfo;
 		process.Start();

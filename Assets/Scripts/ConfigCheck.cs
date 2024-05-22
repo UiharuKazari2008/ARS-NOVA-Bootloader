@@ -22,7 +22,7 @@ public class ConfigCheck : MonoBehaviour
 
 	private void Start()
 	{
-		fileName = Path.Combine(Application.streamingAssetsPath, "current_config.txt");
+		fileName = Path.Combine("Q:\\proc\\", "current_config.txt");
 		StartCoroutine(UpdateDisplay());
 	}
 

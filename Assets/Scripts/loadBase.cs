@@ -13,7 +13,7 @@ public class loadBase : MonoBehaviour
 
 	private void Start()
 	{
-		installFilePath = Path.Combine(Application.streamingAssetsPath, "install.txt");
+		installFilePath = Path.Combine("Q:\\proc\\", "install.txt");
 		StartCoroutine(UpdateDisplay());
 	}
 

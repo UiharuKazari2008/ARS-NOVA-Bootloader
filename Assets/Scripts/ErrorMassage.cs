@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ErrorMassage : MonoBehaviour
 {
+	public String errorFile = "state.txt";
+
 	public Text errorText;
 
 	public Text messageText;
 
 	private void Start()
 	{
-		string path = Path.Combine(Application.streamingAssetsPath, "state.txt");
+		string path = Path.Combine("Q:\\proc\\", errorFile);
 		if (File.Exists(path))
 		{
 			string[] array = File.ReadAllLines(path);

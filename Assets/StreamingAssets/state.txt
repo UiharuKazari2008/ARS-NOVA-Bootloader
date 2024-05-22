@@ -1,2 +1,3 @@
 STEP 1=Boot=false
 error=false
+keychip=not_ready

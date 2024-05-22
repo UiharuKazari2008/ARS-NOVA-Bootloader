@@ -15,7 +15,7 @@ public class CheckStart : MonoBehaviour
     {
         Cursor.visible = false;
         Reset();
-        if (File.Exists(Path.Combine("C:\\SEGA\\system\\BIOS_ENABLE")))
+        if (File.Exists(Path.Combine("Q:\\nvram\\BIOS_ENABLE")))
         {
 
             Debug.Log("BIOS Enabled");
@@ -36,22 +36,36 @@ public class CheckStart : MonoBehaviour
 
     void Reset()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "current_config.txt");
+        string path = Path.Combine("Q:\\proc\\", "current_config.txt");
         using (StreamWriter sw = File.CreateText(path))
         {
             sw.WriteLine("haruna=false");
             sw.WriteLine("sp_en=found_cvt");
+            sw.WriteLine("keychip=not_ready");
             sw.Close();
         }
-        string path1 = Path.Combine(Application.streamingAssetsPath, "state.txt");
+        string path1 = Path.Combine("Q:\\proc\\", "state.txt");
         using (StreamWriter sw = File.CreateText(path1))
         {
             sw.WriteLine("STEP 1=Boot=false");
             sw.WriteLine("error=false");
             sw.Close();
         }
-        string path2 = Path.Combine(Application.streamingAssetsPath, "install.txt");
+        string path2 = Path.Combine("Q:\\proc\\", "install.txt");
         using (StreamWriter sw = File.CreateText(path2))
+        {
+            sw.WriteLine("");
+            sw.Close();
+        }
+        string path3 = Path.Combine("Q:\\proc\\", "lifecycle_state.txt");
+        using (StreamWriter sw = File.CreateText(path3))
+        {
+            sw.WriteLine("STEP 1=Initilizing=false");
+            sw.WriteLine("error=false");
+            sw.Close();
+        }
+        string path4 = Path.Combine("Q:\\proc\\", "config_errors.txt");
+        using (StreamWriter sw = File.CreateText(path4))
         {
             sw.WriteLine("");
             sw.Close();
@@ -74,20 +88,28 @@ public class CheckStart : MonoBehaviour
 
     private void transition()
     {
-        if (File.Exists(Path.Combine("C:\\SEGA\\update\\system_update.ps1")))
+        if (File.Exists(Path.Combine("Q:\\nvram\\LIFECYCLE_CONTROLLER")))
         {
-            Debug.Log("System Update Found");
-            SceneManager.LoadScene("LevelUpdate");
-        }
-        else if (File.Exists(Path.Combine("C:\\SEGA\\system\\PLATFORM_INSTALLED")))
-        {
-            Debug.Log("Ready to Boot");
-            SceneManager.LoadScene("LevelNormal");
+            SceneManager.LoadScene("LevelSME");
         }
         else
         {
-            Debug.Log("Platform Installer Triggred");
-            SceneManager.LoadScene("LevelPre");
+
+            if (File.Exists(Path.Combine("C:\\Windows\\ARS_NOVA\\update\\system_update.ps1")))
+            {
+                Debug.Log("System Update Found");
+                SceneManager.LoadScene("LevelUpdate");
+            }
+            else if (File.Exists(Path.Combine("Q:\\nvram\\PLATFORM_INSTALLED")))
+            {
+                Debug.Log("Ready to Boot");
+                SceneManager.LoadScene("LevelNormal");
+            }
+            else
+            {
+                Debug.Log("Platform Installer Triggred");
+                SceneManager.LoadScene("LevelPre");
+            }
         }
     }
 }

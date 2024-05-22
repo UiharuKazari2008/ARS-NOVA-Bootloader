@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +14,7 @@ public class startHandle : MonoBehaviour
 		startInfo.FileName = "powershell.exe";
 		startInfo.UseShellExecute = true;
 		startInfo.CreateNoWindow = showWindow;
-		startInfo.WorkingDirectory = Application.streamingAssetsPath;
+		startInfo.WorkingDirectory = Path.Combine("Q:\\lib\\boot");
 		if (showWindow)
         {
 			startInfo.WindowStyle = ProcessWindowStyle.Normal;
@@ -22,7 +23,7 @@ public class startHandle : MonoBehaviour
         {
 			startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 		}
-		startInfo.Arguments = "-File \"" + Application.streamingAssetsPath + "/" + batchFileName + "\"";
+		startInfo.Arguments = "-File \"" + Path.Combine("Q:\\lib\\boot") + "/" + batchFileName + "\"";
 		Process process = new Process();
 		process.StartInfo = startInfo;
 		process.Start();
